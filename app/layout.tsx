@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const roxboroughRegular = localFont({
+  src: "../public/fonts/RoxboroughCF-Thin.otf",
+  variable: "--font-rox-reg",
   display: "swap",
 });
 
@@ -19,7 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body className={`${montserrat.className} antialiased`}>{children}</body>
+      <body
+        className={`${montserrat.className} ${roxboroughRegular.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,8 +1,121 @@
 @import "tailwindcss";
 
+@layer utilities {
+  .font-rox-reg {
+    font-family: var(--font-rox-reg);
+  }
+
+  /* Custom color utilities with systematic naming */
+  .bg-primary {
+    background-color: #f4f1ee;
+  }
+  .bg-secondary {
+    background-color: #e1dede;
+  }
+  .bg-tertiary {
+    background-color: #7b7962;
+  }
+  .bg-foreground1 {
+    background-color: #764b36;
+  }
+  .bg-foreground2 {
+    background-color: #7b7962;
+  }
+
+  .text-primary {
+    color: #f4f1ee;
+  }
+  .text-secondary {
+    color: #e1dede;
+  }
+  .text-tertiary {
+    color: #7b7962;
+  }
+  .text-foreground1 {
+    color: #764b36;
+  }
+  .text-foreground2 {
+    color: #7b7962;
+  }
+
+  .border-primary {
+    border-color: #f4f1ee;
+  }
+  .border-secondary {
+    border-color: #e1dede;
+  }
+  .border-tertiary {
+    border-color: #7b7962;
+  }
+  .border-foreground1 {
+    border-color: #764b36;
+  }
+  .border-foreground2 {
+    border-color: #7b7962;
+  }
+
+  .hover\:bg-primary:hover {
+    background-color: #f4f1ee;
+  }
+  .hover\:bg-secondary:hover {
+    background-color: #e1dede;
+  }
+  .hover\:bg-tertiary:hover {
+    background-color: #7b7962;
+  }
+  .hover\:bg-foreground1:hover {
+    background-color: #764b36;
+  }
+  .hover\:bg-foreground2:hover {
+    background-color: #7b7962;
+  }
+
+  .hover\:text-primary:hover {
+    color: #f4f1ee;
+  }
+  .hover\:text-secondary:hover {
+    color: #e1dede;
+  }
+  .hover\:text-tertiary:hover {
+    color: #7b7962;
+  }
+  .hover\:text-foreground1:hover {
+    color: #764b36;
+  }
+  .hover\:text-foreground2:hover {
+    color: #7b7962;
+  }
+
+  /* nav background utilities */
+  .bg-nav-bg {
+    background-color: var(--color-nav-bg);
+  }
+  .text-nav-bg {
+    color: var(--color-nav-bg);
+  }
+  .border-nav-bg {
+    border-color: var(--color-nav-bg);
+  }
+  .hover\:bg-nav-bg:hover {
+    background-color: var(--color-nav-bg);
+  }
+  .hover\:text-nav-bg:hover {
+    color: var(--color-nav-bg);
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Custom color variables */
+  --color-primary: #f4f1ee; /* tło (main background) */
+  --color-secondary: #e1dede; /* belki i tła (bars and secondary backgrounds) */
+  --color-tertiary: #7b7962; /* buttony (buttons) */
+  --color-foreground1: #764b36; /* teksty główne i tytuły (main text and titles) */
+  --color-foreground2: #7b7962; /* podrzędne teksty (secondary text) */
+  --color-nav-bg: rgb(231 228 224); /* navigation background (nav-bg) */
+
+  /* Default theme variables */
+  --background: #f4f1ee; /* Using primary as main background */
+  --foreground: #764b36; /* Using foreground1 as main text color */
 }
 
 body {
