@@ -6,7 +6,8 @@ export const featuredArticles = [
       "https://images.unsplash.com/photo-1641737885878-78e076b4cf1c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     imageAlt: "Kundalini energia",
     title: "Czym jest energia Kundalini?",
-    description: "Poznaj podstawy pracy z energią i jak bezpiecznie rozpocząć praktykę.",
+    description:
+      "Poznaj podstawy pracy z energią i jak bezpiecznie rozpocząć praktykę.",
     href: "/artykuly/energia-kundalini",
   },
   {

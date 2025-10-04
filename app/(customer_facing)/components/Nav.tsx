@@ -10,7 +10,7 @@ import { navLinks } from "../../data/navLinks";
 // Reusable desktop links component
 const DesktopLinks = ({ linkClassName = "" }: { linkClassName?: string }) => (
   <>
-  {navLinks.map(link => (
+    {navLinks.map(link => (
       <Link
         key={link.id}
         href={link.href}

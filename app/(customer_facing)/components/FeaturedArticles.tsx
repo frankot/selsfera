@@ -1,5 +1,5 @@
-import ArticleCard, { ArticleCardProps } from "./ArticleCard";
 import Link from "next/link";
+import ArticleCard, { ArticleCardProps } from "./ArticleCard";
 
 interface FeaturedArticlesProps {
   items: ReadonlyArray<ArticleCardProps>;
@@ -20,10 +20,12 @@ export default function FeaturedArticles({
     <section className={`w-full px-4 ${className}`}>
       <div className="mx-auto max-w-7xl">
         <div className="mb-8">
-          <h2 className="font-rox-reg text-foreground1 text-3xl md:text-4xl">{title}</h2>
+          <h2 className="font-rox-reg text-foreground1 text-3xl md:text-4xl">
+            {title}
+          </h2>
         </div>
         <div className="grid gap-4 md:grid-cols-4">
-          {items.map((item) => (
+          {items.map(item => (
             <ArticleCard key={item.href} {...item} />
           ))}
         </div>

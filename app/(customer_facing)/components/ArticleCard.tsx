@@ -33,7 +33,7 @@ export default function ArticleCard({
         />
       </div>
       <div className="px-3 py-4">
-        <h3 className="text-foreground1 mb-1 line-clamp-2 text-lg font-semibold leading-snug">
+        <h3 className="text-foreground1 mb-1 line-clamp-2 text-lg leading-snug font-semibold">
           {title}
         </h3>
         {description && (
@@ -41,7 +41,7 @@ export default function ArticleCard({
             {description}
           </p>
         )}
-        <div className="mt-3 text-xs font-semibold tracking-wide text-foreground2">
+        <div className="text-foreground2 mt-3 text-xs font-semibold tracking-wide">
           Czytaj →
         </div>
       </div>
