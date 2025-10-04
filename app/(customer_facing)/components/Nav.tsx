@@ -2,15 +2,44 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navData } from "../../data/navData";
+
+// Reusable desktop links component
+const DesktopLinks = ({ linkClassName = "" }: { linkClassName?: string }) => (
+  <>
+    {navData.links.map(link => (
+      <Link
+        key={link.id}
+        href={link.href}
+        className={
+          linkClassName ||
+          "text-foreground1 hover:text-foreground2 font-[500] tracking-widest uppercase transition-colors duration-200"
+        }
+      >
+        {link.label}
+      </Link>
+    ))}
+  </>
+);
 
 const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSticky, setShowSticky] = useState(false); // desktop sticky nav visibility
+
+  // Scroll state refs (avoid re-renders on every scroll)
+  const lastScrollY = useRef(0);
+  const upDelta = useRef(0);
+  const downDelta = useRef(0);
+  const ticking = useRef(false);
 
   // Component styling configuration
   const HAMBURGER_SIZE = 44; // Minimum touch target size
   const ANIMATION_DURATION = 0.3;
+  const SCROLL_THRESHOLD = 360; // ScrollY after which sticky nav can appear
+  const REVEAL_DELTA = 100; // Total upward scroll needed to reveal
+  const HIDE_DELTA = 70; // Total downward scroll needed to hide
+  const MIN_DELTA = 2; // Ignore tiny jitter
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -20,10 +49,58 @@ const Nav = () => {
     setIsMobileMenuOpen(false);
   };
 
+  // Scroll listener for desktop sticky nav show/hide
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const delta = currentY - lastScrollY.current;
+
+        if (Math.abs(delta) > MIN_DELTA) {
+          if (delta > 0) {
+            // Scrolling down
+            downDelta.current += delta;
+            upDelta.current = 0;
+            if (downDelta.current > HIDE_DELTA && showSticky) {
+              setShowSticky(false);
+              downDelta.current = 0;
+            }
+          } else {
+            // Scrolling up
+            upDelta.current += -delta; // delta is negative
+            downDelta.current = 0;
+            if (
+              upDelta.current > REVEAL_DELTA &&
+              currentY > SCROLL_THRESHOLD &&
+              !showSticky
+            ) {
+              setShowSticky(true);
+              upDelta.current = 0;
+            }
+          }
+
+          // Always hide sticky when above threshold
+          if (currentY <= SCROLL_THRESHOLD && showSticky) {
+            setShowSticky(false);
+          }
+        }
+
+        lastScrollY.current = currentY;
+        ticking.current = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [showSticky]);
+
   return (
     <>
-      <nav className="bg-nav-bg fixed top-0 right-0 left-0 z-50 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Hero / initial absolute nav (shows at top) */}
+      <nav className="bg-nav-bg absolute top-0 right-0 left-0 z-50 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20">
           <div className="flex h-24 items-center justify-between">
             {/* Desktop Logo */}
             <div className="hidden md:flex">
@@ -47,15 +124,7 @@ const Nav = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden items-center space-x-12 md:flex">
-              {navData.links.map((link) => (
-                <Link
-                  key={link.id}
-                  href={link.href}
-                  className="text-foreground1 hover:text-foreground2 font-[500] tracking-widest uppercase transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <DesktopLinks />
             </div>
 
             {/* Mobile Hamburger Menu */}
@@ -104,6 +173,34 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+
+      {/* Sticky desktop nav that slides in/out on scroll direction (exact copy styling) */}
+      <motion.nav
+        aria-label="Primary navigation"
+        initial={false}
+        animate={{ y: showSticky ? 0 : "-100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="bg-nav-bg fixed top-0 right-0 left-0 z-50 hidden backdrop-blur-sm md:block"
+        aria-hidden={!showSticky}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20">
+          <div className="flex h-24 items-center justify-between">
+            {/* Desktop Logo (same as absolute) */}
+            <div className="hidden md:flex">
+              <Link
+                href={navData.logo.href}
+                className="font-rox-reg text-foreground1 text-5xl font-bold transition-colors duration-200 hover:text-gray-700"
+              >
+                {navData.logo.text}
+              </Link>
+            </div>
+            {/* Preserve spacing with empty flex item for symmetry when needed */}
+            <div className="flex items-center space-x-12 md:flex">
+              <DesktopLinks />
+            </div>
+          </div>
+        </div>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

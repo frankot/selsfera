@@ -37,14 +37,14 @@ export default function EventOfTheMonth({
         fill
         priority
         quality={85}
-        className="object-cover"
+        className="object-contain"
         sizes="(max-width: 768px) 100vw, 40vw"
       />
     </div>
   );
 
   const contentBlock = (
-    <div className="flex w-full flex-col justify-center px-2 py-8 md:w-3/5 md:px-12 md:py-16 lg:px-20">
+    <div className="flex w-full flex-col justify-center px-2 py-8 md:w-3/5 md:px-12 md:py-16 lg:pl-0 lg:pr-32">
       <h2 className="font-rox-reg text-foreground1 mb-6 text-4xl leading-tight md:text-5xl lg:text-6xl ">
         {title}
       </h2>
@@ -82,7 +82,7 @@ export default function EventOfTheMonth({
       className={`w-full px-4 py-12 md:py-20 ${className}`}
       aria-labelledby="event-of-the-month-heading"
     >
-      <div className="mx-auto flex max-w-7xl flex-col-reverse gap-10 md:flex-row md:items-stretch md:gap-0">
+      <div className="mx-auto flex max-w-7xl flex-col-reverse gap-10 md:flex-row md:items-stretch   md:gap-0">
         {contentBlock}
         {imageBlock}
       </div>
