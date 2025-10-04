@@ -21,7 +21,7 @@ export default function ArticleCard({
   return (
     <Link
       href={href}
-      className={`group block overflow-hidden rounded-sm border border-black/5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md ${className}`}
+      className={`group block overflow-hidden  border border-black/5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md ${className}`}
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden">
         <Image

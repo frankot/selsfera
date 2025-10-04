@@ -34,7 +34,7 @@ export default function Card(props: CardProps) {
   return (
     <Link
       href={href}
-      className={`group border-tertiary/5 block overflow-hidden rounded-sm border transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md ${className}`}
+      className={`group border-tertiary/5 block overflow-hidden  border transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-md ${className}`}
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
