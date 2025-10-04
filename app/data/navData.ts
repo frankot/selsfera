@@ -1,16 +1,11 @@
-export interface NavLink {
-  id: string;
-  label: string;
-  href: string;
-  external?: boolean;
-}
+import { navLinks, type NavLink } from "./navLinks";
 
 export interface NavData {
   logo: {
     text: string;
     href: string;
   };
-  links: NavLink[];
+  links: ReadonlyArray<NavLink>;
 }
 
 export const navData: NavData = {
@@ -18,31 +13,5 @@ export const navData: NavData = {
     text: "SELF SFERA",
     href: "/",
   },
-  links: [
-    {
-      id: "oferta",
-      label: "Oferta",
-      href: "/oferta",
-    },
-    {
-      id: "o-nas",
-      label: "O nas",
-      href: "/o-nas",
-    },
-    {
-      id: "wydarzenia",
-      label: "Wydarzenia",
-      href: "/wydarzenia",
-    },
-    {
-      id: "blog",
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      id: "kontakt",
-      label: "Kontakt",
-      href: "/kontakt",
-    },
-  ],
+  links: navLinks,
 };

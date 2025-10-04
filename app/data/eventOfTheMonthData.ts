@@ -17,10 +17,11 @@ export const eventOfTheMonth: EventOfTheMonthData = {
   imageAlt: "Warsztaty kobiece na łonie natury",
   title: "Wydarzenie miesiąca",
   subtitle: "Warsztaty kobiece z duchem Podlasia",
-  body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fermentum, lacus a dignissim consectetur, libero arcu vulputate mi, sed facilisis nibh nibh et sapien. Integer ac arcu vitae magna sagittis luctus. Cras vitae tellus sed nisl porta ultrices. Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+  body: `Zapraszamy na wyjątkowe spotkanie kobiet w duchu uważności, łagodności i wzajemnego wsparcia. Weekendowe warsztaty to czas na oddech, ruch, dźwięk i rozmowę w bezpiecznej, serdecznej atmosferze – z dala od zgiełku, blisko natury.
 
-Donec sit amet ipsum eros. Proin bibendum mollis neque, at dapibus ipsum volutpat quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed rhoncus nulla sed mi faucibus, vitae euismod elit pharetra. Fusce sodales, turpis nec lobortis efficitur, nibh est viverra justo, non placerat odio risus et nisl.
-`,
+Pod okiem doświadczonej prowadzącej zanurzysz się w praktykach otwierających ciało i głos, w kręgach dzielenia oraz w kojących ceremoniach dźwięku. Program jest przyjazny dla osób początkujących i elastyczny – tak, aby każdy mógł znaleźć swój rytm i przestrzeń.
+
+Dbamy o proste, sezonowe, roślinne posiłki i wygodne zakwaterowanie w przytulnym miejscu sprzyjającym regeneracji. Wrócisz z lekkością w ciele, klarownością w głowie i poczuciem, że masz do czego wracać – do siebie.`,
   ctaLabel: "Więcej informacji",
   ctaHref: "/wydarzenia/podlasie",
 };

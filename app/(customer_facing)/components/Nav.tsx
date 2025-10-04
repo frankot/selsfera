@@ -1,14 +1,16 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navData } from "../../data/navData";
+import { navLinks } from "../../data/navLinks";
 
 // Reusable desktop links component
 const DesktopLinks = ({ linkClassName = "" }: { linkClassName?: string }) => (
   <>
-    {navData.links.map(link => (
+  {navLinks.map(link => (
       <Link
         key={link.id}
         href={link.href}
@@ -100,25 +102,33 @@ const Nav = () => {
     <>
       {/* Hero / initial absolute nav (shows at top) */}
       <nav className="bg-nav-bg absolute top-0 right-0 left-0 z-50 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
           <div className="flex h-24 items-center justify-between">
             {/* Desktop Logo */}
             <div className="hidden md:flex">
-              <Link
-                href={navData.logo.href}
-                className="font-rox-reg text-foreground1 text-5xl font-bold transition-colors duration-200 hover:text-gray-700"
-              >
-                {navData.logo.text}
+              <Link href={navData.logo.href} aria-label="Selsfera">
+                <Image
+                  src="/logoSF.png"
+                  alt="Selsfera logo"
+                  width={340}
+                  height={90}
+                  priority
+                  className="h-auto w-[210px] lg:w-[340px]"
+                />
               </Link>
             </div>
 
             {/* Mobile Logo - Centered */}
             <div className="flex flex-1 justify-center md:hidden">
-              <Link
-                href={navData.logo.href}
-                className="font-rox-reg text-xl font-bold text-gray-900"
-              >
-                {navData.logo.text}
+              <Link href={navData.logo.href} aria-label="Selsfera">
+                <Image
+                  src="/logoSF.png"
+                  alt="Selsfera logo"
+                  width={110}
+                  height={40}
+                  priority
+                  className="h-auto w-[110px]"
+                />
               </Link>
             </div>
 
@@ -183,15 +193,19 @@ const Nav = () => {
         className="bg-nav-bg fixed top-0 right-0 left-0 z-50 hidden backdrop-blur-sm md:block"
         aria-hidden={!showSticky}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
           <div className="flex h-24 items-center justify-between">
             {/* Desktop Logo (same as absolute) */}
             <div className="hidden md:flex">
-              <Link
-                href={navData.logo.href}
-                className="font-rox-reg text-foreground1 text-5xl font-bold transition-colors duration-200 hover:text-gray-700"
-              >
-                {navData.logo.text}
+              <Link href={navData.logo.href} aria-label="Selsfera">
+                <Image
+                  src="/logoSF.png"
+                  alt="Selsfera logo"
+                  width={340}
+                  height={90}
+                  priority
+                  className="h-auto w-[210px] lg:w-[340px]"
+                />
               </Link>
             </div>
             {/* Preserve spacing with empty flex item for symmetry when needed */}
@@ -225,7 +239,7 @@ const Nav = () => {
               transition={{ duration: ANIMATION_DURATION }}
             >
               <div className="space-y-1 px-4 py-6">
-                {navData.links.map((link, index) => (
+                {navLinks.map((link, index) => (
                   <motion.div
                     key={link.id}
                     initial={{ opacity: 0, x: -20 }}
