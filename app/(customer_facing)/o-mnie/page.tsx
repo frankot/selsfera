@@ -186,6 +186,37 @@ export default function AboutPage() {
 				</div>
 			</div>
 		</section>
+
+    {/* Simple Variant 3: Wide photo, big heading, text block */}
+    <section className="w-full px-4 pt-12 md:pt-20 pb-28 border-t border-foreground2/10">
+      <div className="mx-auto max-w-6xl">
+        <div className="relative aspect-[16/5] w-full overflow-hidden md:aspect-[16/4] lg:aspect-[16/7] mb-12">
+          <Image
+            src="/o-mnie.jpg"
+            alt="SelfSfera – o nas"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width:768px) 100vw, 1280px"
+          />
+        </div>
+        <h2 className="font-rox-reg text-foreground1 mb-10 text-center text-[clamp(2.8rem,6vw,5rem)] leading-[0.95] tracking-wide">O NAS</h2>
+        <div className="mx-auto max-w-4xl text-foreground1/90 leading-relaxed md:text-lg space-y-6">
+          <p>Być może też to znasz: praca, która na papierze wygląda świetnie, a w środku… trochę wypala.</p>
+          <p>Przez 10 lat byłam związana z marketingiem i branżą IT — tworzyłam, zarządzałam, dostarczałam, dopinałam. Ale coś zaczęło zgrzytać. Im bardziej udawałam, że wszystko gra, tym głośniej moje wnętrze domagało się głosu.</p>
+          <p>Zatrzymałam się.<br/>I zaczęłam słuchać.<br/>Siebie.</p>
+          <p>Dziś jestem certyfikowaną coachką i hipnoterapeutką. Pracuję z ludźmi, którzy — tak jak ja kiedyś — mają dość funkcjonowania na autopilocie. Pomagam im odkrywać potencjał, talenty, nowy kierunek. Czasem wystarczy iskra. Czasem głębokie zanurzenie. Ale efekt zawsze jest ten sam: pełniejsze, bardziej satysfakcjonujące życie.</p>
+          <p>Z tej zmiany narodziła się SelfSfera — przestrzeń, która nie tylko inspiruje, ale i realnie wspiera.</p>
+          <p>To selektywny przewodnik po wydarzeniach, warsztatach i wyjazdach rozwojowych. Takich, które mają sens. Które nie obiecują złotych gór, ale oferują konkret: narzędzia, relacje, nowe perspektywy. Czasem medytacja w lesie. Czasem krąg kobiet. Czasem coaching ze szczyptą sportu – ale zawsze w rytmie duszy, nie wyścigu. Wszystko po to, by odnaleźć siebie – po swojemu, w swoim tempie.</p>
+          <p>Zbieramy tu wyjątkowych ludzi i wyjątkowe wydarzenia. Dzielimy się miejscami, które pachną rozpalonym kominkiem i chlebem z pieca, mają prawdziwe drzewa za oknem i przestrzeń, w której można prawdziwie odetchnąć.</p>
+          <p className="font-medium italic text-foreground1">To nie wyszukiwarka, a zaproszenie – do siebie, do innych i do życia, które naprawdę Cię woła.</p>
+          <p>Jeśli jesteś organizatorem warsztatów, prowadzącą, przewodnikiem, właścicielem wyjątkowego miejsca – zapraszamy Cię do współtworzenia tej przestrzeni. SelfSfera powstała właśnie po to, by łączyć – ludzi, pomysły, przestrzenie. Z wyczuciem, sercem, ale przede wszystkim misją.</p>
+          <div className="pt-10">
+            <p className="inline-block border-l-4 border-tertiary pl-5 font-semibold tracking-wide text-foreground1">Nikola Zbyszewska-Strus — założycielka SelfSfery</p>
+          </div>
+        </div>
+      </div>
+    </section>
     </>
   );
 }
