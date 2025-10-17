@@ -1,4 +1,4 @@
-import { featuredArticles } from "@/app/data/articlesData";
+import { getAllPosts } from "@/lib/markdown";
 import {
   recommendedEvents,
   recommendedPlaces,
@@ -12,7 +12,19 @@ import Hero from "./components/Hero";
 import Mossaic from "./components/Mossaic";
 import Recommendations from "./components/Recommendations";
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
+  const featuredItems = posts
+    .filter(p => Boolean(p.coverImage))
+    .slice(0, 4)
+    .map(p => ({
+      image: p.coverImage as string,
+      imageAlt: p.coverImageAlt || p.title,
+      title: p.title,
+      description: p.description,
+      href: `/blog/${p.slug}`,
+    }));
+
   return (
     <>
       <Hero />
@@ -33,7 +45,7 @@ export default function Home() {
         className="pb-44"
       />
 
-      <FeaturedArticles items={featuredArticles} className="pb-20" />
+      <FeaturedArticles items={featuredItems} className="pb-20" />
     </>
   );
 }

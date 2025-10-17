@@ -13,7 +13,7 @@ export default function FeaturedArticles({
   items,
   className = "",
   title = "Aktualności",
-  ctaHref = "/artykuly",
+  ctaHref = "/blog",
   ctaLabel = "Zobacz wszystkie",
 }: FeaturedArticlesProps) {
   return (
