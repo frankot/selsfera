@@ -1,6 +1,6 @@
 import { getAllPosts, getPostBySlug } from "@/lib/markdown";
-import Link from "next/link";
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "./post.module.css";
 
 export const dynamic = "force-static";
@@ -52,7 +52,10 @@ export default async function BlogPostPage({
       <article className="mx-auto max-w-3xl px-4 py-10 md:py-16">
         {/* Back */}
         <div className="mb-6">
-          <Link href="/blog" className="text-foreground2 text-sm hover:underline">
+          <Link
+            href="/blog"
+            className="text-foreground2 text-sm hover:underline"
+          >
             ← Wróć
           </Link>
         </div>

@@ -1,12 +1,12 @@
+import matter from "gray-matter";
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
 import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 export type PostFrontmatter = {
   slug: string;
@@ -30,8 +30,8 @@ export function getPostSlugs(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
     .readdirSync(CONTENT_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, ""));
+    .filter(f => f.endsWith(".md"))
+    .map(f => f.replace(/\.md$/, ""));
 }
 
 export function getPostFilePath(slug: string): string {
@@ -45,7 +45,7 @@ export async function parseMarkdownToHtml(markdown: string): Promise<string> {
     // Convert md -> mdast -> hast -> html
     .use(remarkRehype)
     .use(rehypeSlug)
-  // Skip autolinking: provide a behavior function that returns false
+    // Skip autolinking: provide a behavior function that returns false
     .use(rehypeStringify)
     .process(markdown);
 
@@ -64,7 +64,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
 export async function getAllPosts(): Promise<Post[]> {
   const slugs = getPostSlugs();
-  const posts = await Promise.all(slugs.map((s) => getPostBySlug(s)));
+  const posts = await Promise.all(slugs.map(s => getPostBySlug(s)));
   return posts
     .filter((p): p is Post => Boolean(p))
     .sort((a, b) => (b.publishDate || "").localeCompare(a.publishDate || ""));

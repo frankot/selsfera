@@ -1,8 +1,8 @@
-import { getAllPosts } from "@/lib/markdown";
 import {
   recommendedEvents,
   recommendedPlaces,
 } from "@/app/data/recommendationsData";
+import { getAllPosts } from "@/lib/markdown";
 import {
   EventOfTheMonthFromData,
   PlaceOfTheMonthFromData,

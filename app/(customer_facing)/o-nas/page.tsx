@@ -74,7 +74,7 @@ export default function AboutPage() {
                     src={BOTTOM_PHOTO}
                     alt="Nikola Zbyszewska-Strus"
                     fill
-                    className="rounded-full border object-bottom border-black/10 object-cover shadow-sm"
+                    className="rounded-full border border-black/10 object-cover object-bottom shadow-sm"
                     sizes="(max-width: 768px) 160px, 480px"
                     priority
                   />
@@ -83,7 +83,7 @@ export default function AboutPage() {
                   Nikola Zbyszewska-Strus – założycielka SelfSfery
                 </p>
               </div>
-              
+
               <div className="bg-secondary/60 border-foreground2/20 border p-6 md:p-7">
                 <h2 className="text-foreground1 mb-4 text-sm tracking-widest uppercase">
                   Sedno SelfSfery
@@ -112,14 +112,10 @@ export default function AboutPage() {
                   </a>
                 </div>
               </div>
-
-              
             </aside>
           </div>
         </div>
       </section>
-
-  
     </>
   );
 }
