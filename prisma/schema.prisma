@@ -1,0 +1,52 @@
+// Prisma schema for selsfera
+// Database: PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  subtitle     String?
+  location     String
+  country      String?
+  startDate    DateTime
+  endDate      DateTime
+  price        Int
+  currency     String   @default("PLN")
+  priceIncludes Json     // array of strings
+  spotsTotal   Int
+  spotsLeft    Int
+  difficulty   String?
+
+  hostName     String
+  hostAvatar   String?
+  hostBio      String?
+
+  heroImages   Json      // [{ src, alt, publicId? }]
+  tags         String[]
+
+  rating       Float?    // average rating
+  reviewsCount Int       @default(0)
+
+  body         String
+
+  // Flexible content blocks replacing rigid schedule
+  // Example: [{ title: "Plan weekendu", items: ["...","..."], type: "list" }]
+  infoBlocks   Json
+
+  // Optional map embed URL
+  mapEmbedUrl  String?
+
+  active       Boolean   @default(true)
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
