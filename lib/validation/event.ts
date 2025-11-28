@@ -1,17 +1,17 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const HeroImageSchema = z.object({
   src: z.string().url().or(z.string().min(1)),
   alt: z.string().min(1),
   publicId: z.string().optional(),
-})
+});
 
 export const InfoBlockSchema = z.object({
   title: z.string().min(1),
-  type: z.enum(['list', 'paragraphs', 'raw']).default('list'),
+  type: z.enum(["list", "paragraphs", "raw"]).default("list"),
   items: z.array(z.string()).optional(),
   content: z.string().optional(),
-})
+});
 
 export const EventBaseSchema = z.object({
   slug: z.string().min(1),
@@ -22,7 +22,7 @@ export const EventBaseSchema = z.object({
   startDate: z.string().or(z.date()),
   endDate: z.string().or(z.date()),
   price: z.coerce.number().int().nonnegative(),
-  currency: z.string().min(1).default('PLN'),
+  currency: z.string().min(1).default("PLN"),
   priceIncludes: z.array(z.string()).default([]),
   spotsTotal: z.coerce.number().int().nonnegative(),
   spotsLeft: z.coerce.number().int().nonnegative(),
@@ -38,8 +38,8 @@ export const EventBaseSchema = z.object({
   infoBlocks: z.array(InfoBlockSchema).default([]),
   mapEmbedUrl: z.string().url().optional(),
   active: z.boolean().default(true),
-})
+});
 
-export type EventInput = z.infer<typeof EventBaseSchema>
-export type InfoBlock = z.infer<typeof InfoBlockSchema>
-export type HeroImage = z.infer<typeof HeroImageSchema>
+export type EventInput = z.infer<typeof EventBaseSchema>;
+export type InfoBlock = z.infer<typeof InfoBlockSchema>;
+export type HeroImage = z.infer<typeof HeroImageSchema>;

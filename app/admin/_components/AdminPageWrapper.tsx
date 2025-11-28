@@ -1,7 +1,13 @@
-import { ReactNode } from 'react'
-import AdminNav from './AdminNav'
+import { ReactNode } from "react";
+import AdminNav from "./AdminNav";
 
-export default function AdminPageWrapper({ title, children }: { title: string; children: ReactNode }) {
+export default function AdminPageWrapper({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <AdminNav />
@@ -10,5 +16,5 @@ export default function AdminPageWrapper({ title, children }: { title: string; c
         {children}
       </div>
     </div>
-  )
+  );
 }

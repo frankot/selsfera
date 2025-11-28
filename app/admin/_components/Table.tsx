@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react";
 
 export function Table({ children }: { children: ReactNode }) {
   return (
@@ -7,25 +7,41 @@ export function Table({ children }: { children: ReactNode }) {
         {children}
       </table>
     </div>
-  )
+  );
 }
 
 export function THead({ children }: { children: ReactNode }) {
-  return <thead className="bg-tertiary/40 text-left text-foreground1">{children}</thead>
+  return (
+    <thead className="bg-tertiary/40 text-foreground1 text-left">
+      {children}
+    </thead>
+  );
 }
 
 export function TBody({ children }: { children: ReactNode }) {
-  return <tbody className="divide-y divide-black/5">{children}</tbody>
+  return <tbody className="divide-y divide-black/5">{children}</tbody>;
 }
 
 export function TR({ children }: { children: ReactNode }) {
-  return <tr className="hover:bg-tertiary/20">{children}</tr>
+  return <tr className="hover:bg-tertiary/20">{children}</tr>;
 }
 
-export function TH({ children, className }: { children: ReactNode; className?: string }) {
-  return <th className={`p-3 font-medium ${className ?? ''}`}>{children}</th>
+export function TH({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <th className={`p-3 font-medium ${className ?? ""}`}>{children}</th>;
 }
 
-export function TD({ children, className }: { children: ReactNode; className?: string }) {
-  return <td className={`p-3 ${className ?? ''}`}>{children}</td>
+export function TD({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return <td className={`p-3 ${className ?? ""}`}>{children}</td>;
 }
